@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VINNY ONE SHOULDER MAXI DRESS - WHITE</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; margin: 20px; }
+
+    .product-page {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .left, .right {
+      flex: 1 1 45%;
+    }
+
+    .main-image {
+      width: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .thumbnails-gallery {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 6px;
+      border: 2px solid transparent;
+    }
+
+    .thumbnail:hover {
+      border-color: #333;
+    }
+
+    .product-info h1 {
+      font-size: 26px;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #e63946;
+      margin-bottom: 10px;
+    }
+
+    .size-selection {
+      margin-top: 20px;
+    }
+
+    .sizes {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .size-btn {
+      padding: 8px 14px;
+      border: 1px solid #ccc;
+      background: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .size-btn.active {
+      background-color: #1d3557;
+      color: white;
+      border-color: #1d3557;
+    }
+
+    #openSizeChart {
+      margin-left: 10px;
+      font-size: 0.9rem;
+      color: #1d3557;
+      text-decoration: underline;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+
+    .color-swatches {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .color-swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    a div{
+        width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+
+    .add-to-bag {
+      background-color: #1d3557;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal-content table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .modal-content th, .modal-content td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .complete-look {
+        margin-top: 20px;
+        display: flex;
+        gap: 20px;
+    }
+
+    .complete-look-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .complete-look-product {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      width: 50%;
+      gap: 10px;
+    }
+
+    .complete-look-product img {
+      width: 50%;
+      border-radius: 8px;
+    }
+
+    .complete-look-product-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .complete-look-product-price {
+      color: #333;
+    }
+
+    .complete-look-color-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+
+    .complete-look-product {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.complete-look-product img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+/* Hover overlay */
+.complete-look-product:hover .hover-overlay {
+  opacity: 1;
+}
+
+.hover-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 13px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Show on hover */
+.complete-look-product:hover .hover-overlay {
+  opacity: 1;
+}
+
+/* Like button */
+.like-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 1;
+}
+.complete-look-product {
+  position: relative;
+  cursor: pointer;
+}
+
+.complete-look-product img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Image zoom effect */
+.image-wrapper img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.image-wrapper:hover img {
+  transform: scale(1.05);
+}
+
+/* Slide-up overlay */
+.hover-overlay {
+  position: absolute;
+  bottom: -10%;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 13px;
+  transition: bottom 0.3s ease;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.image-wrapper:hover .hover-overlay {
+  bottom: 0;
+}
+
+/* Like button */
+.like-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 1;
+}
+form button{
+  cursor: pointer;
+  border: none;
+  height: 24px; width: 24px; border-radius: 50%;
+}
+
+  </style>
+</head>
+<body>
+
+<div class="product-page">
+  <!-- Left Side -->
+  <div class="left">
+    <img id="mainImage" class="main-image" src="https://petalandpup.com/cdn/shop/files/ZinniaMidiDress-Lucia-4.jpg?v=1746656665&width=720" alt="Main Product" />
+    <div class="thumbnails-gallery" id="thumbnails">
+      <img class="thumbnail" src="https://petalandpup.com/cdn/shop/files/ZinniaMidiDress-Lucia4507.jpg?v=1746656665&width=720" alt="Thumb 1">
+      <img class="thumbnail" src="https://petalandpup.com/cdn/shop/files/ZinniaMidiDress-Lucia-6.jpg?v=1746656665&width=720" alt="Thumb 2">
+      <img class="thumbnail" src="https://petalandpup.com/cdn/shop/files/ZinniaMidiDress-Lucia4545.jpg?v=1746656665&width=720" alt="Thumb 3">
+    </div>
+  </div>
+
+  <!-- Right Side -->
+  <div class="right">
+    <div class="product-info">
+      <h1>VINNY ONE SHOULDER MAXI DRESS - LIGHT BLUE</h1>
+      <p class="price">$99.00</p>
+
+      <div class="size-selection">
+        <label>Size:</label>
+        <div class="sizes">
+          <button class="size-btn" data-size="XS">XS</button>
+          <button class="size-btn" data-size="S">S</button>
+          <button class="size-btn" data-size="M">M</button>
+          <button class="size-btn" data-size="L">L</button>
+          <button class="size-btn" data-size="XL">XL</button>
+          <a id="openSizeChart">Find Your Fit</a>
+        </div>
+      </div>
+
+      <!-- Size Chart Modal -->
+      <div id="sizeChartModal" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <h2>Size Chart</h2>
+          <table>
+            <thead>
+              <tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hips</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>XS</td><td>32"</td><td>24"</td><td>34"</td></tr>
+              <tr><td>S</td><td>34"</td><td>26"</td><td>36"</td></tr>
+              <tr><td>M</td><td>36"</td><td>28"</td><td>38"</td></tr>
+              <tr><td>L</td><td>38"</td><td>30"</td><td>40"</td></tr>
+              <tr><td>XL</td><td>40"</td><td>32"</td><td>42"</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="color-swatches">
+      <form action="index.html" method="get">
+        <button style="background-color: white; border: .5px solid black; "></button>
+      </form>
+      <form action=""  method="get">
+        <button type="" style="background-color: lightblue; border: 2px solid black;"></button>
+      </form>
+      </div>
+
+      <button class="add-to-bag">Add to Bag</button>
+
+      <h5>Product Details</h5>
+      <p>
+        This striking dress features a captivating asymmetrical neckline that beautifully frames the collarbone, complemented by a non-adjustable shoulder strap for a sleek finish. The front cut-out on the bust adds a daring touch.
+      </p>
+
+      <!-- Complete the Look on Right Panel -->
+      <h3 class="complete-look-title">Complete The Look</h3>
+      <div class="complete-look">
+        
+
+<div class="complete-look-product">
+  <div class="image-wrapper">
+    <button class="like-button">♥</button>
+    <img src="https://cdn.shopify.com/s/files/1/0266/8855/3034/files/MARLOWE-BLACK_540x.jpg?v=1742783950" alt="MARLOWE-BLACK_HEELS" />
+    <div class="hover-overlay">Quick Add</div>
+  </div>
+  <div class="complete-look-product-title">MARLOWE-BLACK_HEELS</div>
+  <div class="complete-look-product-price">$59.00</div>
+  <span class="complete-look-color-dot" style="background:#000000;"></span>
+</div>
+
+
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // Image Switch
+  document.querySelectorAll('.thumbnail').forEach(img => {
+    img.addEventListener('click', () => {
+      document.getElementById('mainImage').src = img.src;
+    });
+  });
+
+  // Size Select
+  document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Modal Open/Close
+  const sizeModal = document.getElementById('sizeChartModal');
+  document.getElementById('openSizeChart').addEventListener('click', () => {
+    sizeModal.style.display = 'flex';
+  });
+  document.querySelector('.close-modal').addEventListener('click', () => {
+    sizeModal.style.display = 'none';
+  });
+  window.onclick = e => {
+    if (e.target === sizeModal) sizeModal.style.display = 'none';
+  };
+</script>
+
+</body>
+</html>
