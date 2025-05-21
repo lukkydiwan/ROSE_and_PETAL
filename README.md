@@ -11,6 +11,8 @@ Welcome to Rose & Petal, a charming Shopify storefront website built from scratc
 3.Boom! You’re all set to explore or customize your own flower-powered shop! 💐
 
 🚀 Features That’ll Make You Swipe Right on This Storefront
+👉Fully responsive- Be it phone tablet or and big monster bring it on in runs on every thing
+
 👉Scrollable Product Gallery — Click a thumbnail and watch the main image magically update. It’s like a slideshow, but you’re the director! 🎬
 
 👉Size Chart Button with Modal — Need the perfect fit? Click the button and boom—a sleek popup with the size chart appears. No guessing, just confidence! 📏
