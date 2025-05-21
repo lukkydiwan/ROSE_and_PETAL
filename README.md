@@ -1,9 +1,9 @@
-#🌹 Rose & Petal — A Stylish Shopify Storefront Made With Just HTML, CSS & JS! 🌸
+<span style="font-size:24px;">🌹 Rose & Petal — A Stylish Shopify Storefront Made With Just HTML, CSS & JS! 🌸</span>
 Welcome to Rose & Petal, a charming Shopify storefront website built from scratch using nothing but good old HTML, CSS, and JavaScript — no fancy frameworks, no complicated backend. Just pure front-end magic! ✨
 
-#Check it out live here 👉 rose-and-petal.onrender.com
+<span style="font-size:24px;">Check it out live here 👉 [rose-and-petal.onrender.com](https://rose-and-petal.onrender.com) </span>
 
-##How to Get Started (Super Simple, I Promise!)
+<span style="font-size:18px;">How to Get Started (Super Simple, I Promise!) </span>
 1.Fork this repo — because sharing is caring 🌍
 
 2.Open the index.html file in the root directory — your ticket to the storefront adventure 🎟️
